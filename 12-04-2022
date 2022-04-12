@@ -27,3 +27,27 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 { "_id" : ObjectId("6254f750ad197183fd365b14"), "name" : "sam", "age" : 28, "status" : "pending" }
 > 
 
+
+
+
+
+ use ruthu
+switched to db ruthu
+> db.collection1.insertMany([{"name":"ruthu","age":20,"status":"ready"},{"name":"karen","age":28,"status":"pending"}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6254fd0065de64bd5ef42623"),
+		ObjectId("6254fd0065de64bd5ef42624")
+	]
+}
+> db.collection1.find()
+{ "_id" : ObjectId("6254f750ad197183fd365b13"), "name" : "ram", "age" : 21, "status" : "ready" }
+{ "_id" : ObjectId("6254f750ad197183fd365b14"), "name" : "sam", "age" : 28, "status" : "pending" }
+{ "_id" : ObjectId("6254fd0065de64bd5ef42623"), "name" : "ruthu", "age" : 20, "status" : "ready" }
+{ "_id" : ObjectId("6254fd0065de64bd5ef42624"), "name" : "karen", "age" : 28, "status" : "pending" }
+> db.collection1.find({$or:[{"name":"ruthu"},{"age":28}]})
+{ "_id" : ObjectId("6254f750ad197183fd365b14"), "name" : "sam", "age" : 28, "status" : "pending" }
+{ "_id" : ObjectId("6254fd0065de64bd5ef42623"), "name" : "ruthu", "age" : 20, "status" : "ready" }
+{ "_id" : ObjectId("6254fd0065de64bd5ef42624"), "name" : "karen", "age" : 28, "status" : "pending" }
+> 
