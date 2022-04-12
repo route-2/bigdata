@@ -1,0 +1,29 @@
+use ruthu
+switched to db ruthu
+> db.collection1.insertOne({"name":"ruthu","age":21,"status":"ready"})
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("6254f643ad197183fd365b12")
+}
+> db.collection1.find()
+{ "_id" : ObjectId("6254f643ad197183fd365b12"), "name" : "ruthu", "age" : 21, "status" : "ready" }
+> db.collection1.insertMany([{"name":"ram","age":21,"status":"ready"},{"name":"sam","age":28,"status":"pending"}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6254f750ad197183fd365b13"),
+		ObjectId("6254f750ad197183fd365b14")
+	]
+}
+> db.collection1.find()
+{ "_id" : ObjectId("6254f643ad197183fd365b12"), "name" : "ruthu", "age" : 21, "status" : "ready" }
+{ "_id" : ObjectId("6254f750ad197183fd365b13"), "name" : "ram", "age" : 21, "status" : "ready" }
+{ "_id" : ObjectId("6254f750ad197183fd365b14"), "name" : "sam", "age" : 28, "status" : "pending" }
+> db.collection1.update({age:21},{$set:{age:23}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.collection1.find()
+{ "_id" : ObjectId("6254f643ad197183fd365b12"), "name" : "ruthu", "age" : 23, "status" : "ready" }
+{ "_id" : ObjectId("6254f750ad197183fd365b13"), "name" : "ram", "age" : 21, "status" : "ready" }
+{ "_id" : ObjectId("6254f750ad197183fd365b14"), "name" : "sam", "age" : 28, "status" : "pending" }
+> 
+
