@@ -53,3 +53,6 @@ switched to db ruthu
 > db.collection1.find({$and:[{"name":"ram"},{"age":21}]})
 { "_id" : ObjectId("6254f750ad197183fd365b13"), "name" : "ram", "age" : 21, "status" : "ready" }
 
+
+
+
